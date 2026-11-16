@@ -25,6 +25,6 @@ function render(){var f=document.getElementById('flt').value,tb=document.getElem
 document.getElementById('flt').onchange=render;
 document.getElementById('f').onchange=function(e){var fl=e.target.files[0];if(!fl)return;var rd=new FileReader();rd.onload=function(){run(String(rd.result));};rd.readAsText(fl);};
 document.getElementById('print').onclick=function(){window.print();};
-document.getElementById('csv').onclick=function(){var q=function(s){s=String(s);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+document.getElementById('csv').onclick=function(){var q=function(s){s=String(s);if(/^[\s\u0000-\u001f\u007f-\u009f\u200b-\u200f\u2028\u2029\ufeff]*[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
  var out='date,who,type,message\n'+rowsData.map(function(r){return [r.date,r.who,r.type,r.text].map(q).join(',');}).join('\n');
  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([out],{type:'text/csv'}));a.download='rental-chat-timeline.csv';a.click();};
