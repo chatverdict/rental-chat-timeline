@@ -2,16 +2,16 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rental Chat Timeline - dated list of repair requests, replies, rent and notices from a WhatsApp export (runs in your browser)</title>
 <meta name="description" content="Free tool: load a WhatsApp chat export with your landlord or tenant and get a dated list of repair requests, replies, rent and notice mentions. The chat contents stay in your browser.">
-<style>body{font:16px/1.5 system-ui,sans-serif;max-width:860px;margin:0 auto;padding:20px;color:#1b1f23}h1{font-size:1.6rem}.box{border:2px dashed #888;border-radius:10px;padding:18px;margin:14px 0}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left;vertical-align:top;font-size:.92rem}.tag{display:inline-block;border-radius:6px;padding:1px 7px;font-size:.8rem;background:#eef}button,select{font-size:1rem;padding:6px 12px}small{color:#555}</style></head><body>
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:860px;margin:0 auto;padding:20px;color:#1b1f23}h1{font-size:1.6rem}.box{border:2px dashed #888;border-radius:10px;padding:18px;margin:14px 0}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left;vertical-align:top;font-size:.92rem}.tag{display:inline-block;border-radius:6px;padding:1px 7px;font-size:.8rem;background:#eef}button,select{font-size:1rem;padding:6px 12px}small{color:#555}.sr{position:absolute;left:-9999px}@media print{.box,button,select,label,#flt{display:none}}</style></head><body>
 <h1>Rental Chat Timeline</h1>
 <p>Need to show when you asked your landlord (or tenant) about a repair, and what they answered? Load the exported chat and get a dated list of the lines that look like <b>repair or maintenance requests, replies and promises, rent and deposit mentions, and notices or deadlines</b>. Free. The chat file is read in your browser and its contents are never sent anywhere. The page only reports anonymous visit and "a file was processed" counts (no text, names or file data).</p>
 <div class="box"><b>1.</b> In WhatsApp: open the chat, More, Export chat, Without media. <b>2.</b> Choose the .txt file here:<br><br>
-<input type="file" id="f" accept=".txt,text/plain"> <small>Date formats like 31/12/2025, 12/31/25 and 31.12.2025 are supported.</small></div>
+<label for="f">WhatsApp export (.txt)</label> <input type="file" id="f" accept=".txt,text/plain"> <small>Date formats like 31/12/2025, 12/31/25 and 31.12.2025 are supported.</small></div>
 <div id="out" hidden>
-<p><span id="sum"></span></p>
-<p>Show: <select id="flt"><option value="all">All matches</option><option value="repair">Repair / maintenance</option><option value="reply">Replies and promises</option><option value="rent">Rent and payments</option><option value="notice">Notices and deadlines</option></select>
-<button id="csv">Download CSV</button> <button id="print">Print / save as PDF</button></p>
-<table><thead><tr><th>Date</th><th>Who</th><th>Type</th><th>Message</th></tr></thead><tbody id="rows"></tbody></table>
+<p><span id="sum" role="status" aria-live="polite"></span></p>
+<p><label for="flt">Show:</label> <select id="flt"><option value="all">All matches</option><option value="repair">Repair / maintenance</option><option value="reply">Replies and promises</option><option value="rent">Rent and payments</option><option value="notice">Notices and deadlines</option></select>
+<button type="button" id="csv">Download CSV</button> <button type="button" id="print">Print / save as PDF</button></p>
+<table><caption class="sr">Matching messages</caption><thead><tr><th scope="col">Date</th><th scope="col">Who</th><th scope="col">Type</th><th scope="col">Message</th></tr></thead><tbody id="rows"></tbody></table>
 </div>
 <p><small>Limits: this is a keyword finder for English messages. It can miss things and flag unrelated lines. It is an organiser for your own notes, not legal advice and not proof of anything; rules about evidence differ by place, so ask a local tenant or landlord advice service before relying on any of it. Keep the original export and screenshots. The table replaces links, email addresses and long digit sequences with placeholders, but other personal details in messages are shown as written, and CSV/PDF contain whatever the table shows.</small></p>
 
